@@ -9,9 +9,9 @@ import {
 
 export const isLoading = (state = null, action) => {
 
-    const {type} = action;
+    const { type } = action;
 
-    switch (type) {
+    switch ( type ) {
 
         case LOADING_START:
             return 'true';
@@ -29,9 +29,9 @@ export const isLoading = (state = null, action) => {
 
 export const airports = (state = [], action) => {
 
-    const {type} = action;
+    const { type } = action;
 
-    switch (type) {
+    switch ( type ) {
 
         case SAVE_AIRPORT_TO_STORE:
             return action.data;
@@ -42,9 +42,9 @@ export const airports = (state = [], action) => {
 }
 
 export const airport = (state = {}, action) => {
-    const {type, airport} = action;
+    const { type, airport } = action;
 
-    switch (type) {
+    switch ( type ) {
 
         case SEND_AIRPORT_DETAIl:
             return airport;
@@ -55,9 +55,9 @@ export const airport = (state = {}, action) => {
 }
 
 export const showModal = (state = false, action) => {
-    const {type} = action;
+    const { type } = action;
 
-    switch (type) {
+    switch ( type ) {
 
         case OPEN_MODAL:
             return true;

@@ -1,36 +1,39 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.container{
-  padding:50px 0;
+
+.container {
+    padding: 50px 0;
 }
 
 .airports-grid {
-  padding:15px;
+    padding: 1rem;
 }
 
-.airports-grid>div{
-  padding:15px;
-  cursor: pointer;
-  border:solid 2px transparent ;
-}
-.airports-grid>div:hover{
-  border-color: #6c757d;
+.airports-grid > div {
+    padding: 1rem;
+    cursor: pointer;
+    border: solid 2px transparent;
 }
 
-.svg-inline--fa{
-  height: 3em;
+.airports-grid > div:hover {
+    border-color: #6c757d;
 }
-.svg-inline--fa.fa-w-8{
-  width:1.5em
+
+.svg-inline--fa {
+    height: 3em;
+}
+
+.svg-inline--fa.fa-w-8 {
+    width: 1.5em
 }
