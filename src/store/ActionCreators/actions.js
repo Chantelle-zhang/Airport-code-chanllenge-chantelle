@@ -9,11 +9,22 @@ import {
 
 export const fetchData = (url) => async (dispatch) => {
 
+
     try {
+
+        dispatch({
+            type: LOADING_START
+        });
+
         const res = await axios.get(url);
+
         dispatch({
             type: SAVE_AIRPORT_TO_STORE,
             data: res.data
+        });
+
+        dispatch({
+            type: LOADING_END
         });
     } catch ( err ) {
 
@@ -23,16 +34,3 @@ export const fetchData = (url) => async (dispatch) => {
     }
 };
 
-export const getAirportsDataWithLoadingState = (url) => async (dispatch) => {
-
-    dispatch({
-        type: LOADING_START
-    });
-
-    await dispatch(fetchData(url));
-
-    dispatch({
-        type: LOADING_END
-    });
-
-};
