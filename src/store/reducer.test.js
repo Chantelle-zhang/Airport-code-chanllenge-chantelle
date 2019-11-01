@@ -101,27 +101,21 @@ describe('test airport reducer', () => {
 describe('test loading reducer', () => {
 
     it('should return the initial state', () => {
-        expect(isLoading('false', {})).toEqual('false')
+        expect(isLoading(false, {})).toEqual(false)
     })
 
     it('test handle LOADING_START ', () => {
-        expect(isLoading('false', {
+        expect(isLoading(false, {
             type: LOADING_START
-        })).toEqual('true')
+        })).toEqual(true)
     })
 
     it('test handle LOADING_END ', () => {
-        expect(isLoading('true', {
+        expect(isLoading(true, {
             type: LOADING_END
-        })).toEqual('false')
+        })).toEqual(false)
     })
 
-
-    it('test handle LOADING_ERROR ', () => {
-        expect(isLoading('true', {
-            type: LOADING_ERROR
-        })).toEqual('error')
-    })
 
 });
 

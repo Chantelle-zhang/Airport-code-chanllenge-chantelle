@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme/build';
 import { HomePage } from './HomePage';
-import { getAirportsDataWithLoadingState } from "../../store/ActionCreators/actions";
 import Airports from "../Airports/Airports";
 import Modal from 'react-bootstrap/Modal';
 
@@ -75,13 +74,13 @@ const mockGetData = jest.fn();
 
 describe('Check Homepage component', () => {
 
-    it('has one <Airports/> component ,one <Modal/> component when isLoading="false "', () => {
-        const isLoading = 'false'
+    it('has one <Airports/> component ,one <Modal/> component when isLoading=false ', () => {
+        const isLoading = false
         const wrapper = mount(
             <HomePage
                 airports={ airports }
                 isLoading={ isLoading }
-                getAirportsDataWithLoadingState={ mockGetData }
+                fetchData={ mockGetData }
                 dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
@@ -92,33 +91,14 @@ describe('Check Homepage component', () => {
     });
 
 
-    it('has api-failure-handling message when isLoading="error "', () => {
-
-        const isLoading = 'error';
-        const wrapper = shallow(
-            <HomePage
-                airports={ airports }
-                isLoading={ isLoading }
-                getAirportsDataWithLoadingState={ mockGetData }
-                dispatch={ mockDispatch }
-            />)
-        const airportsComponent = wrapper.find(Airports);
-        const modal = wrapper.find(Modal);
-        const message = wrapper.find("[data-test='api-failure-handling']");
-        expect(airportsComponent.length).toBe(0);
-        expect(modal.length).toBe(0);
-        expect(message.length).toBe(1);
-
-    });
-
     it('has loading indicator  when isLoading="true"', () => {
 
-        const isLoading = 'true';
+        const isLoading = true;
         const wrapper = shallow(
             <HomePage
                 airports={ airports }
                 isLoading={ isLoading }
-                getAirportsDataWithLoadingState={ mockGetData }
+                fetchData={ mockGetData }
                 dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
@@ -131,12 +111,12 @@ describe('Check Homepage component', () => {
     });
 
     it('Test modal close ', () => {
-        const isLoading = 'false';
+        const isLoading = false;
         const wrapper = shallow(
             <HomePage
                 airports={ airports }
                 isLoading={ isLoading }
-                getAirportsDataWithLoadingState={ mockGetData }
+                fetchData={ mockGetData }
                 dispatch={ mockDispatch }
             />)
         wrapper.find("[data-test='close']").at(0).simulate('click');
@@ -145,12 +125,12 @@ describe('Check Homepage component', () => {
     });
 
     it('Test componentDidMount ()', () => {
-        const isLoading = 'false';
+        const isLoading = false;
         const wrapper = mount(
             <HomePage
                 airports={ airports }
                 isLoading={ isLoading }
-                getAirportsDataWithLoadingState={ mockGetData }
+                fetchData={ mockGetData }
                 dispatch={ mockDispatch }
             />);
         wrapper.find("[data-test='click']").at(1).simulate('click');

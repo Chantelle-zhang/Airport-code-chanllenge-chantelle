@@ -4,7 +4,7 @@ import {
     SAVE_AIRPORT_TO_STORE,
     OPEN_MODAL,
     CLOSE_MODAL,
-    SEND_AIRPORT_DETAIl, LOADING_ERROR,
+    SEND_AIRPORT_DETAIl
 } from './ActionCreators/actionTypes'
 
 export const isLoading = (state = null, action) => {
@@ -14,13 +14,10 @@ export const isLoading = (state = null, action) => {
     switch ( type ) {
 
         case LOADING_START:
-            return 'true';
+            return true;
 
         case  LOADING_END:
-            return 'false';
-
-        case LOADING_ERROR:
-            return 'error';
+            return false;
 
         default:
             return state;

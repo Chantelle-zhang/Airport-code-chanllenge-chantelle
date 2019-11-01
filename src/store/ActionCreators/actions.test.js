@@ -3,8 +3,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import expect from 'expect';
-import { fetchData, getAirportsDataWithLoadingState} from "./actions";
-import { LOADING_START, LOADING_END, SAVE_AIRPORT_TO_STORE } from "./actionTypes";
+import { fetchData } from "./actions";
+import { SAVE_AIRPORT_TO_STORE } from "./actionTypes";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -94,7 +94,9 @@ describe('getPosts actions', () => {
         });
 
         const expectedActions = [
-            { type: SAVE_AIRPORT_TO_STORE, data: airportsMock }
+            { type: "LOADING_START"},
+            { type: SAVE_AIRPORT_TO_STORE, data: airportsMock },
+            { type: "LOADING_END"}
             ];
 
         return store.dispatch(fetchData('flight/refData/airport')).then(() => {
