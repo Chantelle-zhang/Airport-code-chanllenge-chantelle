@@ -19,7 +19,7 @@ export class HomePage extends Component {
 
 
     componentDidMount() {
-        const url = 'flight/refData/airport';
+        const url = 'https://api.qantas.com/flight/refData/airport';
         this.props.fetchData (url);
     }
 
@@ -52,8 +52,7 @@ export class HomePage extends Component {
 
 
         return (
-            isLoading === 'error' ? <p data-test='api-failure-handling'>'Network Error, please refresh again'</p> :
-                isLoading === 'true' ? <img data-test='loading-gif' src='/spinner.gif' alt='loading'/> :
+                isLoading ? <img data-test='loading-gif' src='/spinner.gif' alt='loading'/> :
                     <div>
                         <header>
                             <h1>Airports Data</h1>
