@@ -6,7 +6,7 @@ const Detail = ({ airport }) => {
 
     return (
         <div>
-            <h1 className='text-center'>{ airport.airportName }</h1>
+            <h2 className='text-center'>{ airport.airportName }</h2>
             <p data-test='airportCode'>airportCode:{ airport.airportCode }</p>
             <p data-test='city'>City: { airport.city.cityName }</p>
             <p data-test='latitude'>Latitude: { airport.location.latitude }</p>

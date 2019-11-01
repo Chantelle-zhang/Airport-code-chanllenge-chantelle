@@ -16,20 +16,6 @@ code {
     padding: 50px 0;
 }
 
-.airports-grid {
-    padding: 1rem;
-}
-
-.airports-grid > div {
-    padding: 1rem;
-    cursor: pointer;
-    border: solid 2px transparent;
-}
-
-.airports-grid > div:hover {
-    border-color: #6c757d;
-}
-
 .svg-inline--fa {
     height: 3em;
 }
@@ -37,3 +23,26 @@ code {
 .svg-inline--fa.fa-w-8 {
     width: 1.5em
 }
+
+h1 {
+    background-color: #323232;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.airportsGrid {
+    padding: 1rem;
+}
+
+.airportsGrid> div {
+    padding: 1rem;
+    cursor: pointer;
+    border: solid 2px transparent;
+}
+
+.airportsGrid>div:hover {
+    border-color: #e40000;
+    color: #e40000;
+}
+

@@ -10,9 +10,9 @@ const Airports = ({ airports, onClick }) =>
     <div>
         <Row>
             { airports.map((airport) =>
-                <Col className="airports-grid"
-                     sm={ 6 }
-                     key={ airport.airportName }
+                <Col className="airportsGrid"
+                     md={ 6 }
+                     key={ `${airport.airportName}${airport.airportCode}` }
                      data-test='click'
                      onClick={ () => onClick(airport) }
                 >
@@ -20,7 +20,7 @@ const Airports = ({ airports, onClick }) =>
                     <div className="shadow d-flex ">
                         <div className="flex-grow-1 ">
                             <p data-test='airport-name'>Airport Name: { airport.airportName }</p>
-                            <p data-test='country'>Country:{ airport.country.countryName }</p>
+                            <p data-test='country'>Country: { airport.country.countryName }</p>
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
                             <FontAwesomeIcon icon={ faAngleRight }/>

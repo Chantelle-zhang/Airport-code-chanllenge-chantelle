@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { getAirportsDataWithLoadingState } from "../../store/ActionCreators/actions";
+import { fetchData } from "../../store/ActionCreators/actions";
 import {
     OPEN_MODAL,
     CLOSE_MODAL,
@@ -20,7 +20,7 @@ export class HomePage extends Component {
 
     componentDidMount() {
         const url = 'flight/refData/airport';
-        this.props.getAirportsDataWithLoadingState(url);
+        this.props.fetchData (url);
     }
 
     openModal(airport) {
@@ -84,8 +84,8 @@ const mapStateToProps = state => ( {
 
 const mapDispatchToProps = dispatch => ( {
     dispatch: dispatch,
-    getAirportsDataWithLoadingState: (url) =>
-        dispatch(getAirportsDataWithLoadingState(url))
+    fetchData : (url) =>
+        dispatch(fetchData (url))
 } );
 
 Airports.propTypes = {
