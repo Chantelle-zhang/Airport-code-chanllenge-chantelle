@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons/index'
 
 
-const Airports = ({ airports, onClick }) =>
+ const Airports = ({ airports, onClick }) =>
+
     <div>
         <Row>
             { airports.map((airport) =>
@@ -30,7 +31,7 @@ const Airports = ({ airports, onClick }) =>
             )
             }
         </Row>
-    </div>;
+    </div>
 
 Airports.propTypes = {
     airports: PropTypes.array,
@@ -38,6 +39,7 @@ Airports.propTypes = {
 
 };
 
-export default Airports;
+export default Airports
+
 
 
