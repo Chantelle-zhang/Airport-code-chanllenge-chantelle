@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchData } from "../../store/ActionCreators/actions";
@@ -9,21 +9,14 @@ import {
 import Airports from "../Airports/Airports";
 import ModalView from "../ModalView/ModalView";
 
-export class HomePage extends Component {
-    constructor() {
-        super();
-        this.openModal = this.openModal.bind(this);
-    }
+export const HomePage = ({ airports, fetchData, dispatch, isLoading }) => {
 
-
-    componentDidMount() {
+    useEffect(() => {
         const url = 'https://api.qantas.com/flight/refData/airport';
-        this.props.fetchData (url);
-    }
+        fetchData(url);
+    }, []);
 
-    openModal(airport) {
-        const { dispatch } = this.props;
-
+    const openModal = (airport) => {
         dispatch({
             type: OPEN_MODAL
         });
@@ -36,22 +29,19 @@ export class HomePage extends Component {
 
     }
 
-    render() {
-        const { isLoading, airports} = this.props;
 
+    return (
+        isLoading ? <img data-test='loading-gif' src='/spinner.gif' alt='loading'/> :
+            <div>
+                <header>
+                    <h1>Airports Data</h1>
+                </header>
+                <Airports airports={ airports } onClick={ openModal }/>
+                <ModalView/>
+            </div>
 
-        return (
-                isLoading ? <img data-test='loading-gif' src='/spinner.gif' alt='loading'/> :
-                    <div>
-                        <header>
-                            <h1>Airports Data</h1>
-                        </header>
-                        <Airports airports={ airports } onClick={ this.openModal } />
-                        <ModalView/>
-                    </div>
+    );
 
-        );
-    }
 }
 
 
@@ -62,9 +52,9 @@ const mapStateToProps = state => ( {
 } );
 
 const mapDispatchToProps = dispatch => ( {
-    dispatch: dispatch,
-    fetchData : (url) =>
-        dispatch(fetchData (url))
+    dispatch,
+    fetchData: (url) =>
+        fetchData(url)
 } );
 
 Airports.propTypes = {
