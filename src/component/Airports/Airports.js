@@ -4,42 +4,69 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons/index'
+import { connect } from "react-redux";
+import { OPEN_MODAL, SEND_AIRPORT_DETAIl } from "../../store/ActionCreators/actionTypes";
 
 
-const Airports = ({ airports, onClick }) =>
+export const Airports = ({ airports, dispatch }) => {
 
-    <div>
-        <Row>
-            { airports.map((airport) =>
-                <Col className="airportsGrid"
-                     md={ 6 }
-                     key={ `${ airport.airportName }${ airport.airportCode }` }
-                     data-test='click'
-                     onClick={ () => onClick(airport) }
-                >
+    const openModal = (airport) => {
+        dispatch({
+            type: OPEN_MODAL
+        });
 
-                    <div className="shadow d-flex ">
-                        <div className="flex-grow-1 ">
-                            <p data-test='airport-name'>Airport Name: { airport.airportName }</p>
-                            <p data-test='country'>Country: { airport.country.countryName }</p>
+        dispatch({
+            type: SEND_AIRPORT_DETAIl,
+            airport
+
+        });
+
+    }
+
+    return (
+        <div>
+            <Row>
+                { airports.map((airport) =>
+                    <Col className="airportsGrid"
+                         md={ 6 }
+                         key={ `${ airport.airportName }${ airport.airportCode }` }
+                         data-test='click'
+                         onClick={ () => openModal(airport) }
+                    >
+
+                        <div className="shadow d-flex ">
+                            <div className="flex-grow-1 ">
+                                <p data-test='airport-name'>Airport Name: { airport.airportName }</p>
+                                <p data-test='country'>Country: { airport.country.countryName }</p>
+                            </div>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={ faAngleRight }/>
+                            </div>
                         </div>
-                        <div className="d-flex justify-content-center align-items-center">
-                            <FontAwesomeIcon icon={ faAngleRight }/>
-                        </div>
-                    </div>
-                </Col>
-            )
-            }
-        </Row>
-    </div>
-
-Airports.propTypes = {
-    airports: PropTypes.array,
-    onClick: PropTypes.func
+                    </Col>
+                )
+                }
+            </Row>
+        </div> )
 
 };
 
-export default Airports
 
+const mapStateToProps = state => ( {
+    airports: state.airports
+} );
 
+const mapDispatchToProps = dispatch => ( {
+    dispatch
+} );
+
+Airports.propTypes = {
+    airports: PropTypes.array,
+
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Airports);
 

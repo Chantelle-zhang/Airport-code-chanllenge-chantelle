@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme/build';
-import Airports from './Airports'
+import { Airports } from './Airports'
 
 const airports = [
     {
@@ -66,11 +66,11 @@ const airports = [
         },
     },
 ];
-
+const mockDispatch = jest.fn();
+const wrapper = shallow(<Airports airports={ airports } dispatch={ mockDispatch }/>);
 describe('Check Airports component', () => {
 
     it('rendering  Airports list ', () => {
-        const wrapper = shallow(<Airports airports={ airports }/>);
         const countries = wrapper.find("[data-test='country']");
         const names = wrapper.find("[data-test='airport-name']");
         expect(countries.length).toBe(airports.length);
@@ -78,10 +78,8 @@ describe('Check Airports component', () => {
     });
 
     it('Test click event', () => {
-        const mockCallBack = jest.fn();
-        const wrapper = shallow(<Airports airports={ airports } onClick={ mockCallBack }/>);
         wrapper.find("[data-test='click']").at(1).simulate('click');
-        expect(mockCallBack).toHaveBeenCalled;
+        expect(mockDispatch).toHaveBeenCalledTimes(2);
 
     });
 

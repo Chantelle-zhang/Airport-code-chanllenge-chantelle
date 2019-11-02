@@ -2,30 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchData } from "../../store/ActionCreators/actions";
-import {
-    OPEN_MODAL,
-    SEND_AIRPORT_DETAIl,
-} from "../../store/ActionCreators/actionTypes";
 import Airports from "../Airports/Airports";
 import ModalView from "../ModalView/ModalView";
 
-export const HomePage = ({ airports, fetchData, dispatch, isLoading }) => {
+export const HomePage = ({ fetchData, isLoading }) => {
 
     useEffect(() => fetchData
-    , [fetchData]);
-
-    const openModal = (airport) => {
-        dispatch({
-            type: OPEN_MODAL
-        });
-
-        dispatch({
-            type: SEND_AIRPORT_DETAIl,
-            airport
-
-        });
-
-    }
+        , []);
 
 
     return (
@@ -34,7 +17,7 @@ export const HomePage = ({ airports, fetchData, dispatch, isLoading }) => {
                 <header>
                     <h1>Airports Data</h1>
                 </header>
-                <Airports airports={ airports } onClick={ openModal }/>
+                <Airports/>
                 <ModalView/>
             </div>
 
@@ -45,20 +28,15 @@ export const HomePage = ({ airports, fetchData, dispatch, isLoading }) => {
 
 const mapStateToProps = state => ( {
     isLoading: state.isLoading,
-    airports: state.airports,
 
 } );
 
 const mapDispatchToProps = dispatch => ( {
-    dispatch,
-    fetchData:dispatch(fetchData())
+    fetchData: dispatch(fetchData())
 } );
 
 Airports.propTypes = {
-
     isLoading: PropTypes.bool,
-    airports: PropTypes.array,
-    onClick: PropTypes.func,
 
 };
 
