@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme/build';
+import { shallow } from 'enzyme/build';
 import { HomePage } from './HomePage';
 import Airports from "../Airports/Airports";
 import ModalView from "../ModalView/ModalView";
@@ -108,20 +108,20 @@ describe('Check Homepage component', () => {
 
     });
 
-   /* it('Test componentDidMount ()', () => {
-        const isLoading = false;
-        const wrapper = mount(
-            <HomePage
-                airports={ airports }
-                isLoading={ isLoading }
-                fetchData={ mockGetData }
-                dispatch={ mockDispatch }
-            />);
-        wrapper.find("[data-test='click']").at(1).simulate('click');
-        const instance = wrapper.instance();
-        const spy = jest.spyOn(instance, 'openModal');
-        instance.openModal();
-        expect(spy).toHaveBeenCalled;
-    });*/
+    /* it('Test componentDidMount ()', () => {
+         const isLoading = false;
+         const wrapper = mount(
+             <HomePage
+                 airports={ airports }
+                 isLoading={ isLoading }
+                 fetchData={ mockGetData }
+                 dispatch={ mockDispatch }
+             />);
+         wrapper.find("[data-test='click']").at(1).simulate('click');
+         const instance = wrapper.instance();
+         const spy = jest.spyOn(instance, 'openModal');
+         instance.openModal();
+         expect(spy).toHaveBeenCalled;
+     });*/
 
 });
