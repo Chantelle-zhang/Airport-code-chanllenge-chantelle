@@ -12,7 +12,7 @@ export const HomePage = ({ fetchData, isLoading }) => {
 
 
     return (
-        isLoading ? <img data-test='loading-gif' src='/spinner.gif' alt='loading'/> :
+        isLoading ?<div className="text-center"> <img data-test='loading-gif' src='/spinner.gif' alt='loading'/></div> :
             <div>
                 <header>
                     <h1>Airports Data</h1>
