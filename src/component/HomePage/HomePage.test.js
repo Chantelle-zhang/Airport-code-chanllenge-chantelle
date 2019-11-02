@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme/build';
 import { HomePage } from './HomePage';
 import Airports from "../Airports/Airports";
-import Modal from 'react-bootstrap/Modal';
+import ModalView from "../ModalView/ModalView";
 
 const airports = [
     {
@@ -74,9 +74,9 @@ const mockGetData = jest.fn();
 
 describe('Check Homepage component', () => {
 
-    it('has one <Airports/> component ,one <Modal/> component when isLoading=false ', () => {
+    it('has one <Airports/> component ,one <ModalView/> component when isLoading=false ', () => {
         const isLoading = false
-        const wrapper = mount(
+        const wrapper = shallow(
             <HomePage
                 airports={ airports }
                 isLoading={ isLoading }
@@ -84,9 +84,9 @@ describe('Check Homepage component', () => {
                 dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
-        const modal = wrapper.find(Modal);
+        const modalView = wrapper.find(ModalView);
         expect(airportsComponent.length).toBe(1);
-        expect(modal.length).toBe(1);
+        expect(modalView.length).toBe(1);
 
     });
 
@@ -102,29 +102,13 @@ describe('Check Homepage component', () => {
                 dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
-        const modal = wrapper.find(Modal);
         const loading = wrapper.find("[data-test='loading-gif']");
         expect(airportsComponent.length).toBe(0);
-        expect(modal.length).toBe(0);
         expect(loading.length).toBe(1);
 
     });
 
-    it('Test modal close ', () => {
-        const isLoading = false;
-        const wrapper = shallow(
-            <HomePage
-                airports={ airports }
-                isLoading={ isLoading }
-                fetchData={ mockGetData }
-                dispatch={ mockDispatch }
-            />)
-        wrapper.find("[data-test='close']").at(0).simulate('click');
-        expect(mockDispatch).toHaveBeenCalledTimes(1)
-
-    });
-
-    it('Test componentDidMount ()', () => {
+   /* it('Test componentDidMount ()', () => {
         const isLoading = false;
         const wrapper = mount(
             <HomePage
@@ -138,6 +122,6 @@ describe('Check Homepage component', () => {
         const spy = jest.spyOn(instance, 'openModal');
         instance.openModal();
         expect(spy).toHaveBeenCalled;
-    });
+    });*/
 
 });
