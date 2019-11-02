@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 
-export const ModalView = ({ showModal, airport, dispatch }) => {
+export const ModalView = ({ showModal, dispatch }) => {
 
     const handleClose = () => {
         dispatch({
@@ -16,7 +16,9 @@ export const ModalView = ({ showModal, airport, dispatch }) => {
     };
 
     return ( <Modal show={ showModal }>
-        <Modal.Body><Detail airport={ airport }/></Modal.Body>
+        <Modal.Body>
+            <Detail />
+        </Modal.Body>
         <div className='text-center pb-5'>
             <button className='btn btn-secondary px-5' data-test='close'
                     onClick={ () => handleClose() }>
@@ -27,7 +29,6 @@ export const ModalView = ({ showModal, airport, dispatch }) => {
 };
 const mapStateToProps = state => ( {
     showModal: state.showModal,
-    airport: state.airport
 } );
 
 const mapDispatchToProps = dispatch => ( {

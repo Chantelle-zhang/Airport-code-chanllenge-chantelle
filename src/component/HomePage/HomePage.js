@@ -8,7 +8,7 @@ import ModalView from "../ModalView/ModalView";
 export const HomePage = ({ fetchData, isLoading }) => {
 
     useEffect(() => fetchData
-        , []);
+        , [fetchData]);
 
 
     return (
