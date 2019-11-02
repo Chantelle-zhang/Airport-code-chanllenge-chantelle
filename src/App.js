@@ -38,7 +38,7 @@ class App extends Component {
         return (
             <Provider store={ store }>
                 <BrowserRouter>
-                    <Container >
+                    <Container>
                         <Switch>
                             <Route exact path='/' component={ HomePage }/>
                         </Switch>

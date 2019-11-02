@@ -1,4 +1,3 @@
-
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
@@ -94,10 +93,10 @@ describe('getPosts actions', () => {
         });
 
         const expectedActions = [
-            { type: "LOADING_START"},
+            { type: "LOADING_START" },
             { type: SAVE_AIRPORT_TO_STORE, data: airportsMock },
-            { type: "LOADING_END"}
-            ];
+            { type: "LOADING_END" }
+        ];
 
         return store.dispatch(fetchData('flight/refData/airport')).then(() => {
             expect(store.getActions()).toEqual(expectedActions);

@@ -6,14 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons/index'
 
 
- const Airports = ({ airports, onClick }) =>
+const Airports = ({ airports, onClick }) =>
 
     <div>
         <Row>
             { airports.map((airport) =>
                 <Col className="airportsGrid"
                      md={ 6 }
-                     key={ `${airport.airportName}${airport.airportCode}` }
+                     key={ `${ airport.airportName }${ airport.airportCode }` }
                      data-test='click'
                      onClick={ () => onClick(airport) }
                 >

@@ -35,13 +35,13 @@ h1 {
     padding: 1rem;
 }
 
-.airportsGrid> div {
+.airportsGrid > div {
     padding: 1rem;
     cursor: pointer;
     border: solid 2px transparent;
 }
 
-.airportsGrid>div:hover {
+.airportsGrid > div:hover {
     border-color: #e40000;
     color: #e40000;
 }
