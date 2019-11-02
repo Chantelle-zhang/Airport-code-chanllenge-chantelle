@@ -6,14 +6,14 @@ import {
 } from './actionTypes';
 
 
-export const fetchData = (url) => async (dispatch) => {
+export const fetchData = () => async (dispatch) => {
 
     dispatch({
         type: LOADING_START
     });
 
     try {
-
+        const url = 'https://api.qantas.com/flight/refData/airport';
         const res = await axios.get(url);
 
         dispatch({

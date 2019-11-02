@@ -11,10 +11,8 @@ import ModalView from "../ModalView/ModalView";
 
 export const HomePage = ({ airports, fetchData, dispatch, isLoading }) => {
 
-    useEffect(() => {
-        const url = 'https://api.qantas.com/flight/refData/airport';
-        fetchData(url);
-    }, []);
+    useEffect(() => fetchData
+    , [fetchData]);
 
     const openModal = (airport) => {
         dispatch({
@@ -53,8 +51,7 @@ const mapStateToProps = state => ( {
 
 const mapDispatchToProps = dispatch => ( {
     dispatch,
-    fetchData: (url) =>
-        fetchData(url)
+    fetchData:dispatch(fetchData())
 } );
 
 Airports.propTypes = {
