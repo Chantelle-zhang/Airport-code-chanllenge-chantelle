@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme/build';
-import Detail from './Detail'
+import {Detail} from './Detail'
 
 
 describe('Check Airports component', () => {

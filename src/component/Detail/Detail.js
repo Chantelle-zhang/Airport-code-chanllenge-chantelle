@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Airports from "../Airports/Airports";
+import { connect } from "react-redux";
 
-const Detail = ({ airport }) => {
+export const Detail = ({ airport }) => {
 
     return (
         <div>
@@ -16,8 +16,16 @@ const Detail = ({ airport }) => {
     )
 }
 
-Airports.propTypes = {
-    airport: PropTypes.object,
+Detail.propTypes = {
+    Detail: PropTypes.object,
 
 };
-export default Detail;
+
+const mapStateToProps = state => ( {
+    airport: state.airport
+} );
+
+
+export default connect(
+    mapStateToProps
+)(Detail);
