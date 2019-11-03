@@ -14,7 +14,7 @@ export const Detail = ({ airport }) => {
             <p data-test='timeZone'>Time Zone:{ airport.city.timeZoneName }</p>
         </div>
     )
-}
+};
 
 Detail.propTypes = {
     Detail: PropTypes.object,

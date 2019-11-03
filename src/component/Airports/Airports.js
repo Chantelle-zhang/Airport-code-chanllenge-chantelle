@@ -51,7 +51,6 @@ export const Airports = ({ airports, dispatch }) => {
 
 };
 
-
 const mapStateToProps = state => ( {
     airports: state.airports
 } );
