@@ -14,8 +14,8 @@ export const fetchData = () => async (dispatch) => {
 
     try {
         const key = 'airports';
-        if ( !navigator.onLine) {
-            if(localStorage[key]) {
+        if ( !navigator.onLine ) {
+            if ( localStorage[key] ) {
                 const airports = JSON.parse(localStorage.getItem(key));
                 console.log('localstorage');
                 dispatch({
@@ -26,13 +26,13 @@ export const fetchData = () => async (dispatch) => {
         } else {
             const url = 'https://api.qantas.com/flight/refData/airport';
             const res = await axios.get(url);
-            if(!localStorage[key]) {
-                localStorage.setItem(key, JSON.stringify(res.data));
-            }
             dispatch({
                 type: SAVE_AIRPORT_TO_STORE,
                 data: res.data
             });
+            if ( !localStorage[key] ) {
+                localStorage.setItem(key, JSON.stringify(res.data));
+            }
         }
 
     } catch ( err ) {
