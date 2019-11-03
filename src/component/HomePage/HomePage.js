@@ -4,15 +4,10 @@ import { connect } from 'react-redux';
 import { fetchData } from "../../store/ActionCreators/actions";
 import Airports from "../Airports/Airports";
 import ModalView from "../ModalView/ModalView";
-import { LOADING_START } from "../../store/ActionCreators/actionTypes";
 
 export class HomePage extends Component {
 
     componentDidMount() {
-       this.props.dispatch({
-            type: LOADING_START
-        });
-
         this.props.fetchData();
     }
 
@@ -38,8 +33,9 @@ const mapStateToProps = state => ( {
 } );
 
 const mapDispatchToProps = dispatch => ( {
-    fetchData: dispatch(fetchData()),
-    dispatch
+    fetchData: ()=> dispatch(fetchData()),
+
+
 } );
 
 Airports.propTypes = {

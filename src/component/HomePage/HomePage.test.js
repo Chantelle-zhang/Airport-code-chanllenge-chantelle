@@ -77,7 +77,6 @@ describe('Check Homepage component', () => {
         const isLoading = false
         const wrapper = shallow(
             <HomePage
-                airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
             />);
@@ -94,7 +93,6 @@ describe('Check Homepage component', () => {
         const isLoading = true;
         const wrapper = shallow(
             <HomePage
-                airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
             />);
@@ -109,11 +107,14 @@ describe('Check Homepage component', () => {
         const isLoading = false;
         const wrapper = shallow(
             <HomePage
-                airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
             />);
 
+        const instance = wrapper.instance();
+        const spy = jest.spyOn(instance, 'componentDidMount');
+        instance.componentDidMount();
+        expect(spy).toHaveBeenCalled;
         expect(mockGetData).toHaveBeenCalled;
     });
 

@@ -8,8 +8,12 @@ import {
 
 export const fetchData = () => async (dispatch) => {
 
+    dispatch({
+        type: LOADING_START
+    });
+
     try {
-        const key = 'airport';
+        const key = 'airports';
         if ( localStorage[key] ) {
             const airports = JSON.parse(localStorage.getItem(key));
             console.log('localstorage');
