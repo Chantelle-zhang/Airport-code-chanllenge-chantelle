@@ -69,7 +69,6 @@ const airports = [
     },
 ];
 
-const mockDispatch = jest.fn();
 const mockGetData = jest.fn();
 
 describe('Check Homepage component', () => {
@@ -81,7 +80,6 @@ describe('Check Homepage component', () => {
                 airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
-                dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
         const modalView = wrapper.find(ModalView);
@@ -99,7 +97,6 @@ describe('Check Homepage component', () => {
                 airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
-                dispatch={ mockDispatch }
             />);
         const airportsComponent = wrapper.find(Airports);
         const loading = wrapper.find("[data-test='loading-gif']");
@@ -115,7 +112,6 @@ describe('Check Homepage component', () => {
                 airports={ airports }
                 isLoading={ isLoading }
                 fetchData={ mockGetData }
-                dispatch={ mockDispatch }
             />);
 
         expect(mockGetData).toHaveBeenCalled;

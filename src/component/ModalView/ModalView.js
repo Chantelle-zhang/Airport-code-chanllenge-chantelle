@@ -17,7 +17,7 @@ export const ModalView = ({ showModal, dispatch }) => {
 
     return ( <Modal show={ showModal }>
         <Modal.Body>
-            <Detail />
+            <Detail/>
         </Modal.Body>
         <div className='text-center pb-5'>
             <button className='btn btn-secondary px-5' data-test='close'

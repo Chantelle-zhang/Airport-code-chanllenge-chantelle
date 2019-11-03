@@ -1,28 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchData } from "../../store/ActionCreators/actions";
 import Airports from "../Airports/Airports";
 import ModalView from "../ModalView/ModalView";
+import { LOADING_START } from "../../store/ActionCreators/actionTypes";
 
-export const HomePage = ({ fetchData, isLoading }) => {
+export class HomePage extends Component {
 
-    useEffect(() => fetchData
-        , [fetchData]);
+    componentDidMount() {
+       this.props.dispatch({
+            type: LOADING_START
+        });
 
+        this.props.fetchData();
+    }
 
-    return (
-        isLoading ?<div className="text-center"> <img data-test='loading-gif' src='/spinner.gif' alt='loading'/></div> :
-            <div>
-                <header>
-                    <h1>Airports Data</h1>
-                </header>
-                <Airports/>
-                <ModalView/>
-            </div>
-
-    );
-
+    render() {
+        return (
+            this.props.isLoading ?
+                <div className="text-center"><img data-test='loading-gif' src='/spinner.gif' alt='loading'/></div> :
+                <div>
+                    <header>
+                        <h1>Airports Data</h1>
+                    </header>
+                    <Airports/>
+                    <ModalView/>
+                </div>
+        );
+    }
 }
 
 
@@ -32,7 +38,8 @@ const mapStateToProps = state => ( {
 } );
 
 const mapDispatchToProps = dispatch => ( {
-    fetchData: dispatch(fetchData())
+    fetchData: dispatch(fetchData()),
+    dispatch
 } );
 
 Airports.propTypes = {

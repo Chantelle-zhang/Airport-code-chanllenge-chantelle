@@ -34,9 +34,9 @@ class App extends Component {
     render() {
         return (
             <Provider store={ store }>
-                    <Container>
-                        <HomePage/>
-                    </Container>
+                <Container>
+                    <HomePage/>
+                </Container>
             </Provider>
         );
     }

@@ -8,25 +8,20 @@ import {
 
 export const fetchData = () => async (dispatch) => {
 
-    dispatch({
-        type: LOADING_START
-    });
-
     try {
-        const key = 'airports'
-        if (localStorage[key]) {
-            const airports=JSON.parse(localStorage.getItem(key) );
-            console.log('localstorage')
+        const key = 'airport';
+        if ( localStorage[key] ) {
+            const airports = JSON.parse(localStorage.getItem(key));
+            console.log('localstorage');
             dispatch({
                 type: SAVE_AIRPORT_TO_STORE,
                 data: airports
             });
 
-        }
-        else {
+        } else {
             const url = 'https://api.qantas.com/flight/refData/airport';
             const res = await axios.get(url);
-            localStorage.setItem(key, JSON.stringify(res.data));
+            // localStorage.setItem(key, JSON.stringify(res.data));
 
             dispatch({
                 type: SAVE_AIRPORT_TO_STORE,
