@@ -104,10 +104,14 @@ describe('Test getData()', () => {
                 { type: "LOADING_END" }
             ];
 
+            localStorage.clear();
+            const KEY = 'airports';
+            const VALUE = JSON.stringify(airportsMock);
+
             return store.dispatch(fetchData()).then(() => {
                 expect(store.getActions()).toEqual(expectedActions);
+                localStorage.setItem(KEY, VALUE);
             });
-
 
         });
     });

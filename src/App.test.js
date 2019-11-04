@@ -12,4 +12,4 @@ describe('Check App component', () => {
         expect(homepage.length).toBe(1);
 
     });
-})
+});
