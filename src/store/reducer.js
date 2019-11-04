@@ -22,7 +22,7 @@ export const isLoading = (state = null, action) => {
         default:
             return state;
     }
-}
+};
 
 export const airports = (state = [], action) => {
 
@@ -36,7 +36,7 @@ export const airports = (state = [], action) => {
         default:
             return state;
     }
-}
+};
 
 export const airport = (state = {}, action) => {
     const { type, airport } = action;
@@ -49,7 +49,7 @@ export const airport = (state = {}, action) => {
         default:
             return state;
     }
-}
+};
 
 export const showModal = (state = false, action) => {
     const { type } = action;
@@ -65,6 +65,6 @@ export const showModal = (state = false, action) => {
         default:
             return state;
     }
-}
+};
 
 

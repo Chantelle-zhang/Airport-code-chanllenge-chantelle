@@ -17,7 +17,7 @@ export const Detail = ({ airport }) => {
 };
 
 Detail.propTypes = {
-    Detail: PropTypes.object,
+    airport: PropTypes.object,
 
 };
 
