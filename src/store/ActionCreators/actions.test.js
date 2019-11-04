@@ -73,33 +73,63 @@ const airportsMock = [
     },
 ];
 
-describe('getPosts actions', () => {
+describe('Test getData()', () => {
 
     beforeEach(function () {
         moxios.install();
+        jest.restoreAllMocks();
     });
 
     afterEach(function () {
         moxios.uninstall();
     });
 
-    it('Test fetchData action dispatch SAVE_AIRPORT_TO_STORE after get response from api call ', () => {
-        moxios.wait(() => {
-            const request = moxios.requests.mostRecent();
-            request.respondWith({
-                status: 200,
-                response: airportsMock,
+    describe('when online', () => {
+
+        it('Test dispatch SAVE_AIRPORT_TO_STORE after get response from api  ', () => {
+
+            jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(true);
+
+            moxios.wait(() => {
+                const request = moxios.requests.mostRecent();
+                request.respondWith({
+                    status: 200,
+                    response: airportsMock,
+                });
             });
-        });
 
-        const expectedActions = [
-            { type: "LOADING_START" },
-            { type: SAVE_AIRPORT_TO_STORE, data: airportsMock },
-            { type: "LOADING_END" }
-        ];
+            const expectedActions = [
+                { type: "LOADING_START" },
+                { type: SAVE_AIRPORT_TO_STORE, data: airportsMock },
+                { type: "LOADING_END" }
+            ];
 
-        return store.dispatch(fetchData('flight/refData/airport')).then(() => {
-            expect(store.getActions()).toEqual(expectedActions);
+            return store.dispatch(fetchData()).then(() => {
+                expect(store.getActions()).toEqual(expectedActions);
+            });
+
+
         });
     });
+
+    describe('when offline', () => {
+
+        it(' if (localstorage[key]),get value from localstorage and dispatch  ', () => {
+
+            jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(false);
+
+            localStorage.clear();
+            const KEY = 'airports';
+            const VALUE = JSON.stringify(airportsMock);
+
+            localStorage.setItem(KEY, VALUE);
+
+            return store.dispatch(fetchData()).then(() => {
+                expect(localStorage.getItem).toHaveBeenLastCalledWith(KEY);
+            });
+
+
+        });
+    })
+
 });
