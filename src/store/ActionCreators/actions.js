@@ -17,7 +17,6 @@ export const fetchData = () => async (dispatch) => {
         if ( !navigator.onLine ) {
             if ( localStorage[key] ) {
                 const airports = JSON.parse(localStorage.getItem(key));
-                console.log('localstorage');
                 dispatch({
                     type: SAVE_AIRPORT_TO_STORE,
                     data: airports
