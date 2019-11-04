@@ -33,7 +33,7 @@ const mapStateToProps = state => ( {
 } );
 
 const mapDispatchToProps = dispatch => ( {
-    fetchData: ()=> dispatch(fetchData()),
+    fetchData: () => dispatch(fetchData()),
 
 
 } );
