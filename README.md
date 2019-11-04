@@ -11,4 +11,8 @@ run tests
 
 npm test -- --coverage:
 get test coverage report
+
+#offline usage;
+Service worker is used for static file when offline
+Localstorage is used for store api response when offline
  
